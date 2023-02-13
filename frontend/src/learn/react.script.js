@@ -1,5 +1,6 @@
 // DOM
 // 실제 문서 객체 모델
+// 실제 DOM 노드는 엄청 많은 속성들을 가진 객체임 -> 무거움
 // const containerElement = document.createElement('div');
 // containerElement.setAttribute('class', 'container container--md');
 // containerElement.textContent = '컨테이너 요소';
@@ -27,12 +28,16 @@ const guideHTML = /* html */`
 // React API
 // Creating React Element
 
+// 리액트는 실제 DOM을 추상화한 virtual DOM을 생성함 -> 가벼움
+// React.createElement(type, props, ...children) <- childeren: 해당 요소의 자식요소도 지정해줄 수 있음
+
 // alias (별칭) 함수
 // 구조 분해 할당
 const { createElement: h /* hyperscript */} = React;
 
 // 가상 DOM 구성 (동적 마크업)
 // design pattern: composite pattern
+// DOM의 attributes 속성을 추상화 한게 props
 const virtualElement = h(
   'div',
   { className: 'container container--md' },
@@ -46,7 +51,7 @@ const virtualElement = h(
 
 // React가 만들어낸 가상 DOM 루트 노드
 // console.log(virtualElement); // App
-
+// React v17  <- 버전마다 API 바껴서 docs 꼭 봐야함
 const actualElement = document.getElementById('root');
 
 // React v17
