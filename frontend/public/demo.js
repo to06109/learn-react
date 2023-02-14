@@ -16,8 +16,13 @@ function Group() {
 // <web-component></web-component>
 
 // 클래스 컴포넌트
-
-
+class Logo extends React.Component {
+  // 렌더링
+  render() {
+    // React 엘리먼트 반환
+    return <img src="/assets/react-logo.svg" alt="React" height="600" />
+  }
+}
 
 /* -------------------------------------------------------------------------- */
 /*                                React DOM 렌더                                */
@@ -26,9 +31,15 @@ function Group() {
 const reactDomRoot = ReactDOM.createRoot(document.getElementById('root'))
 
 reactDomRoot.render(
-  // HTML, XML
-  <div role="group" lang="en">
-    Group Element
-  </div>,
-  // ReactDOM.createElement(Group)
+  // with JSX
+  // <div role="group" lang="en">
+  //   <Logo />
+  // </div>
+
+  // without JSX
+  React.createElement(
+    'div',
+    { role: 'group', lang: 'en' },
+    React.createElement(Logo),
+  ),
 )
