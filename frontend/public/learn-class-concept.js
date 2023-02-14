@@ -35,6 +35,14 @@ class Event {
   getUid() {
     return this.#uid
   }
+
+  setDate(newDate) {
+    this.#date = newDate;
+  }
+
+  getUid() {
+    return this.#uid;
+  }
 }
 
 const studyEvent = new Event('study', '2023. 2. 18')
@@ -42,3 +50,16 @@ const movieEvent = new Event('movie', '2023. 3. 7')
 
 studyEvent.getType()
 studyEvent.date
+// 유틸리티 함수
+function getRandomNumber(n) {
+  return Math.round(Math.random() * n);
+}
+
+function generateUniqueId() {
+  const characters = 'abcdefghijklmn'.split('');
+  let key = '';
+  characters.forEach((c) => {
+    key += characters[getRandomNumber(characters.length - 1)];
+  });
+  return `euid-${key}`;
+}
