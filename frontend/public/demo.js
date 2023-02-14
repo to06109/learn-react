@@ -2,13 +2,11 @@
 /*                                 React 컴포넌트                                 */
 /* -------------------------------------------------------------------------- */
 
+// JSX 보간법(interpolation)
+// <element prop={value}>this is {content}</element>
+
 // 함수(형) 컴포넌트
 function Group(props) {
-  console.log(props.lang)
-  console.log(props.content)
-
-  // JSX 보간법(interpolation)
-  // <element prop={value}>this is {content}</element>
   return (
     <div role="group" lang={props.lang}>
       {props.content}
@@ -23,15 +21,18 @@ function Group(props) {
 // 클래스 컴포넌트
 class Logo extends React.Component {
   // 생성자
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   // 렌더링
   render() {
-    console.log(this.props) // props 객체 반환
+    // React는 99% JavaScript
+    // 구조 분해 할당
+    const { path, label } = this.props
+
     // React 엘리먼트 반환
-    return <img src="/assets/react-logo.svg" alt="React" height="600" />
+    return <img src={path} alt={label} />
   }
 }
 
@@ -46,7 +47,12 @@ reactDomRoot.render(
   // <template></template>
   <React.Fragment>
     <Logo path="/assets/react-logo.svg" label="React" />
-    <Group lang="es" content="sit amet consectetur." />
+    <Group />
+    <Logo
+      path="https://upload.vectorlogo.zone/logos/nextjs/images/60eff509-53dd-4280-92e7-7318fa02e934.svg"
+      label="Next.js"
+      unknown="아무 것도 몰라요~"
+    />
     <Group lang="ru" content="Далеко-далеко за словесными горами." />
   </React.Fragment>,
 )
