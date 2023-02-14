@@ -54,23 +54,100 @@ function AppNav() {
   )
 }
 
-function AppHeader() {
-  return (
-    <header>
-      {/* red, fill */}
-      <AppLogo />
-      {/* red, outline */}
-      <AppLogo outline />
-      {/* white, fill */}
-      <AppLogo color="white" />
-      {/* white, outline */}
-      <AppLogo color="white" outline />
+// pure(function) to ~: 함수를 클래스로 바꿔주는 extention
 
-      <AppSearch />
-      <AppNav />
-    </header>
-  )
+// props.logoType.shape
+// props.logoType.color
+class AppHeader extends React.Component {
+  state = {
+    outline: false,
+    color: 'red',
+  }
+
+  render() {
+    const { logoType } = this.props
+
+    return (
+      <header>
+        <AppLogo
+          outline={logoType.shape.includes('outline') ? true : false}
+          color={logoType.color}
+        />
+
+        <div role="group">
+          <button
+            type="button"
+            onClick={() => {
+              this.setState({
+                outline: !this.state.outline,
+              })
+            }}
+          >
+            change logo type is outline
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              console.log('clicked button 2')
+            }}
+          >
+            change logo type is fill
+          </button>
+        </div>
+
+        {/* <AppLogo outline /> */}
+        {/* <AppLogo color="white" /> */}
+        {/* <AppLogo color="white" outline /> */}
+
+        <AppSearch />
+        <AppNav />
+      </header>
+    )
+  }
 }
+
+// function AppHeader({ logoType: { shape, color } }) {
+//   // 업데이트 조건 3가지
+//   // 1. state 변경
+//   // 2. props 변경
+//   // 3. forceUpdate() 실행 !important <- 거의 쓸 일 없음
+
+//   return (
+//     <header>
+//       {/* red, fill */}
+//       <AppLogo
+//         outline={shape.include('outline') ? true : false}
+//         color={color}
+//       />
+
+//       <div role="group">
+//         <button
+//           type="button"
+//           onClick={() => {
+//             console.log('clicked button 1')
+//           }}
+//         >
+//           change logo type is outline
+//         </button>
+//         <button
+//           type="button"
+//           onClick={() => {
+//             console.log('clicked button 2')
+//           }}
+//         >
+//           change logo type is fill
+//         </button>
+//       </div>
+
+//       {/* <AppLogo outline /> */}
+//       {/* <AppLogo color="white" /> */}
+//       {/* <AppLogo color="white" outline /> */}
+
+//       <AppSearch />
+//       <AppNav />
+//     </header>
+//   )
+// }
 
 function AppMain() {
   return (
@@ -106,9 +183,10 @@ class App extends React.Component {
     // 상태 업데이트 → 다시 렌더링!!!
     // 선언형 프로그래밍
     this.state = {
-      headline: '',
-      description: '',
-      subjects: [],
+      logoType: {
+        shape: 'outline',
+        color: 'red',
+      },
     }
   }
 
@@ -117,7 +195,7 @@ class App extends React.Component {
 
     return (
       <div className="app">
-        <AppHeader />
+        <AppHeader logoType={this.state.logoType} />
         <AppMain />
         <AppFooter />
       </div>
