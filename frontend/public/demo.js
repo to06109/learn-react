@@ -3,12 +3,17 @@
 /* -------------------------------------------------------------------------- */
 
 // 함수(형) 컴포넌트
-function Group() {
-  return React.createElement(
-    'div',
-    { role: 'group', lang: 'en' },
-    'Group Element',
-  ) // <div role="group" lang="en">Group Element</div>
+function Group(props) {
+  console.log(props.lang)
+  console.log(props.content)
+
+  // JSX 보간법(interpolation)
+  // <element prop={value}>this is {content}</element>
+  return (
+    <div role="group" lang={props.lang}>
+      {props.content}
+    </div>
+  )
 }
 
 // Web Components API
@@ -17,8 +22,14 @@ function Group() {
 
 // 클래스 컴포넌트
 class Logo extends React.Component {
+  // 생성자
+  constructor(props) {
+    super(props)
+  }
+
   // 렌더링
   render() {
+    console.log(this.props) // props 객체 반환
     // React 엘리먼트 반환
     return <img src="/assets/react-logo.svg" alt="React" height="600" />
   }
@@ -31,15 +42,72 @@ class Logo extends React.Component {
 const reactDomRoot = ReactDOM.createRoot(document.getElementById('root'))
 
 reactDomRoot.render(
-  // with JSX
-  // <div role="group" lang="en">
-  //   <Logo />
-  // </div>
-
-  // without JSX
-  React.createElement(
-    'div',
-    { role: 'group', lang: 'en' },
-    React.createElement(Logo),
-  ),
+  // Compound Component Pattern
+  // <template></template>
+  <React.Fragment>
+    <Logo path="/assets/react-logo.svg" label="React" />
+    <Group lang="es" content="sit amet consectetur." />
+    <Group lang="ru" content="Далеко-далеко за словесными горами." />
+  </React.Fragment>,
 )
+
+// reactDomRoot.render(
+//   [
+//     // with JSX
+//     <div role="presentation" lang="ko" key="with-jsx">
+//       <Logo /> 리액트
+//     </div>,
+
+//     // without JSX
+//     React.createElement(
+//       'div',
+//       { role: 'gorup', lang: 'en', key: "without-jsx" },
+//       React.createElement(Logo),
+//       'React'
+//     ),
+//   ]
+// );
+
+// 함수의 arguments
+function sum(x, y) {
+  return x + y
+}
+
+sum(10, 1000) // 1010
+sum(-9, -2) // 1010
+
+// React 컴포넌트의 Props (함수의 전달인자)
+function MenuList(props) {
+  // { items: [...] }
+  return (
+    <ul>
+      <li>item 1</li>
+      <li>item 2</li>
+    </ul>
+  )
+}
+
+// React.createElement(MenuList); // sum();
+
+// sum(29, 103);
+// React.createElement(
+//   MenuList,
+//   {
+//     items: [
+//       { id: 'menu-1', title: 'munu one'},
+//       { id: 'menu-2', title: 'munu two'},
+//     ]
+//   }
+// );
+
+{
+  /* <MenuList></MenuList>
+const items = [ 
+  { id: 'menu-1', title: 'munu one'},
+  { id: 'menu-2', title: 'munu two'},
+] */
+}
+
+{
+  /* <MenuList items={items}></MenuList> */
+}
