@@ -11,6 +11,14 @@ function Group() {
   ) // <div role="group" lang="en">Group Element</div>
 }
 
+// Web Components API
+// globalThis.customElements('web-component', WebComponent)
+// <web-component></web-component>
+
+// 클래스 컴포넌트
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                React DOM 렌더                                */
 /* -------------------------------------------------------------------------- */
