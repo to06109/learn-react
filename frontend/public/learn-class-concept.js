@@ -17,6 +17,8 @@ class Event {
   // private 필드
   // 접근 제어자
   #uid = '' // 외부에서 접근 불가능
+  #type
+  #date
 
   // 생성자(constructor)
   constructor(type, date) {
@@ -29,7 +31,7 @@ class Event {
   // 인스턴스(instance):생성된 객체
   // 생성된 객체만 사용 가능한 메서드: 인스턴스 메서드
   getType() {
-    return this.type
+    return this.#type
   }
 
   getUid() {
@@ -37,29 +39,30 @@ class Event {
   }
 
   setDate(newDate) {
-    this.#date = newDate;
+    this.#date = newDate
   }
 
   getUid() {
-    return this.#uid;
+    return this.#uid
   }
 }
 
-const studyEvent = new Event('study', '2023. 2. 18')
-const movieEvent = new Event('movie', '2023. 3. 7')
+// const studyEvent = new Event('study', '2023. 2. 18')
+// const movieEvent = new Event('movie', '2023. 3. 7')
 
-studyEvent.getType()
-studyEvent.date
+// studyEvent.getType()
+// studyEvent.date
+
 // 유틸리티 함수
 function getRandomNumber(n) {
-  return Math.round(Math.random() * n);
+  return Math.round(Math.random() * n)
 }
 
 function generateUniqueId() {
-  const characters = 'abcdefghijklmn'.split('');
-  let key = '';
+  const characters = 'abcdefghijklmn'.split('')
+  let key = ''
   characters.forEach((c) => {
-    key += characters[getRandomNumber(characters.length - 1)];
-  });
-  return `euid-${key}`;
+    key += characters[getRandomNumber(characters.length - 1)]
+  })
+  return `euid-${key}`
 }
