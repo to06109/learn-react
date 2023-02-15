@@ -26,12 +26,12 @@ var App = /*#__PURE__*/function (_React$Component) {
       headline: 'React Application',
       // isUpdateHeadline: false,
       isToggle: false,
-      isLoading: false
+      isLoading: !true,
+      hasError: null // { message: '서버에서 적절하지 않은 요청이 있었다는 응답이 있었습니다.' },
     });
     _defineProperty(_assertThisInitialized(_this), "originalHeadline", _this.state.headline);
     _defineProperty(_assertThisInitialized(_this), "willUpdateHeadlibe", 'NEW HEADLINE!! 😃');
     _defineProperty(_assertThisInitialized(_this), "handleChangeHeadline", function () {
-      var assignHeadlineContent = '';
       // 조건 처리
       // 문을 사용할 것인가?
       if (_this.state.isToggle) {
@@ -42,18 +42,9 @@ var App = /*#__PURE__*/function (_React$Component) {
       } else {
         _this.setState({
           isToggle: true,
-          headline: _this.willUpdateHeadline
+          headline: _this.willUpdateHeadlibe
         });
       }
-
-      // 아니면 식을 사용할 것인가?
-      // this.setState({
-      //   headline: this.state.isToggle
-      //     ? 'NEW HEADLINE!! 😃'
-      //     : this.originalHeadline,
-      //   // isUpdateHeadline: true,
-      //   isToggle: !this.state.isToggle,
-      // }) //상태 변경 시도 -> React UI 업데이트(재조정 알고리즘)
     });
     return _this;
   }
@@ -68,9 +59,21 @@ var App = /*#__PURE__*/function (_React$Component) {
           role: "alert"
         }, "\uB370\uC774\uD130 \uB85C\uB529 \uC911...");
       }
+      if (this.state.hasError) {
+        return /*#__PURE__*/React.createElement("div", {
+          role: "alert"
+        }, this.state.hasError.message);
+      }
+
+      // `style` prop object!!!!!!!!
+      var hiddenStyle = {
+        display: 'none'
+      };
       return /*#__PURE__*/React.createElement("div", {
         "data-component": "App"
-      }, /*#__PURE__*/React.createElement("h1", null, headline), /*#__PURE__*/React.createElement("button", {
+      }, /*#__PURE__*/React.createElement("h1", {
+        style: hiddenStyle
+      }, headline), /*#__PURE__*/React.createElement("button", {
         // disabled={isUpdateHeadline}
         type: "button",
         onClick: this.handleChangeHeadline
