@@ -1,9 +1,20 @@
 ###### EUID ╳ Likelion
 
-# React 프로그래밍
+# JSX & React
 
-멋쟁이 사자처럼 React 학습 저장소
+학습 저장소 자료 복사 ([degit](https://github.com/Rich-Harris/degit#readme) 활용)
 
-- [학습 커리큘럼](https://github.com/users/yamoo9/projects/3/views/1)
-- [학습 진행상황](https://github.com/users/yamoo9/projects/3/views/2)
-- [학습 Q/A](https://github.com/yamoo9/likelion-FEQA/issues?q=is%3Aissue+is%3Aclosed)
+```sh
+degit yamoo9/likelion-react#03-jsx-in-depth 03-jsx-in-depth
+```
+
+## 학습 목표
+
+XML과 유사한 문법을 제공하는 ECMAScript 확장인 JSX에 대해 학습합니다.
+
+- React 그리고 JSX
+- JSX vs. HTML 구조 설계
+- JSX의 역할 (creating React Element)
+- JSX 컴파일러
+- Babel
+- TypeScript
