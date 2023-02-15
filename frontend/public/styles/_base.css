@@ -5,7 +5,12 @@ body {
   color: #3b4e72;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 0;
   margin-bottom: 0.2em;
   font-weight: 400;
@@ -22,4 +27,17 @@ p {
 ul {
   margin-top: 0;
   padding-left: 1em;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* 버튼 클릭 시 svg내부에 있는 것들 클릭할 수 없도록 */
+button svg {
+  pointer-events: none;
 }

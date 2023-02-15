@@ -19,7 +19,8 @@ var App = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, App);
     _this = _super.call(this, props);
     _this.state = {
-      headline: 'React Application'
+      headline: 'React Application',
+      isUpdateHeadline: false
     };
     _this.handleChangeHeadline = _this.handleChangeHeadline.bind(_assertThisInitialized(_this));
     return _this;
@@ -28,17 +29,22 @@ var App = /*#__PURE__*/function (_React$Component) {
     key: "handleChangeHeadline",
     value: function handleChangeHeadline() {
       this.setState({
-        headline: 'NEW HEADLINE!! 😃'
+        headline: 'NEW HEADLINE!! 😃',
+        isUpdateHeadline: true
       }); //상태 변경 시도 -> React UI 업데이트(재조정 알고리즘)
     }
   }, {
     key: "render",
     value: function render() {
+      var _this$state = this.state,
+        headline = _this$state.headline,
+        isUpdateHeadline = _this$state.isUpdateHeadline;
       return /*#__PURE__*/React.createElement("div", {
         "data-component": "App"
-      }, /*#__PURE__*/React.createElement("h1", null, this.state.headline), /*#__PURE__*/React.createElement("button", {
+      }, /*#__PURE__*/React.createElement("h1", null, headline), /*#__PURE__*/React.createElement("button", {
         type: "button",
-        onClick: this.handleChangeHeadline
+        onClick: this.handleChangeHeadline,
+        disabled: isUpdateHeadline
       }, "\uD5E4\uB4DC\uB77C\uC778 \uBCC0\uACBD"));
     }
   }]);
