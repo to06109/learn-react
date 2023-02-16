@@ -70,4 +70,4 @@ function LabButton(props) {
   )
 }
 
-export default Home
+export default likeLionMembers
