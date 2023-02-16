@@ -1,6 +1,8 @@
+import { likeLionMembers } from '../data/likeLionMembers.js'
+
 class Home extends React.Component {
   state = {
-    members: this.props.likeLionMembers ?? [],
+    members: likeLionMembers,
   }
 
   handleFilterLab = (labNumber) => {
