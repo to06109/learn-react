@@ -1,4 +1,4 @@
-var likeLionMembers = [{
+export var likeLionMembers = [{
   id: 'likelion__4_1-01',
   lab: 1,
   name: '박재석',
@@ -369,7 +369,7 @@ var likeLionMembers = [{
   name: '소정',
   gender: '여성'
 }, {
-  id: 'likelion__4_8-08',
+  id: 'likelion__4_8-07',
   lab: 8,
   name: '이경주',
   gender: '여성'
