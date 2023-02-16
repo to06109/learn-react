@@ -31,7 +31,7 @@ class Home extends React.Component {
       <React.Fragment>
         <h2>리스트 렌더링</h2>
         <ul>
-          {products.map(({id, name, price, image}) => {
+          {products.map(({ id, name, price, image }) => {
             return (
               <li key={id}>
                 <figure data-id={id}>
