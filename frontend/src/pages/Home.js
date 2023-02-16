@@ -7,6 +7,20 @@ class Home extends React.Component {
   }
 
   initialMembers = likeLionMembers
+  labCount = this.calcLabCount() // this.members (105) 에서 lab 몇 개? 계산
+
+  calcLabCount() {
+    // 로직?
+    // 데이터 분석
+    // 내가 무엇을 해야하나?
+    // - 105개의 데이터를 순회해서 lab의 개수가 몇 개인지를 확인해야 한다.
+    // 그걸 하려면 어떤 로직을 짜야 하나?
+    // - 배열??? 아니면 다른 데이터를?
+    // 그러면 결과 값은 무엇을 내보내야 하나?
+    // - 랩의 개수
+    
+    return 11
+  }
 
   handleFilterLab = (labNumber) => {
     this.setState({
@@ -19,7 +33,7 @@ class Home extends React.Component {
       <React.Fragment>
         <h2>멋쟁이 사자처럼 프론트엔드 스쿨 4기 멤버</h2>
         <div role="group" style={{ display: 'flex', gap: 8 }}>
-          {Array(11)
+          {Array(this.labCount)
             .fill(null)
             .map((_, index) => {
               let labIndex = index + 1
