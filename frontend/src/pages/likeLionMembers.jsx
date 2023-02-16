@@ -1,6 +1,6 @@
 import { likeLionMembers } from '../data/likeLionMembers.js'
 
-class likeLionMembers extends React.Component {
+class LikeLionMembers extends React.Component {
   state = {
     // 모든 것을 상태로 설정하는 것은 옳지 않다.
     members: likeLionMembers,
@@ -70,4 +70,4 @@ function LabButton(props) {
   )
 }
 
-export default likeLionMembers
+export default LikeLionMembers
