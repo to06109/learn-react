@@ -18,8 +18,23 @@ class Home extends React.Component {
     // - 배열??? 아니면 다른 데이터를?
     // 그러면 결과 값은 무엇을 내보내야 하나?
     // - 랩의 개수
-    
-    return 11
+
+    // 내가 해결한 코드
+    // const lab = this.initialMembers.filter((item, index) => {
+    //   return (
+    //     this.initialMembers.findIndex((item2, index2) => {
+    //       return item.lab === item2.lab
+    //     }) === index
+    //   )
+    // })
+
+    let labSet = new Set()
+
+    this.state.members.forEach(({ lab }) => {
+      labSet.add(lab)
+    })
+
+    return labSet.size
   }
 
   handleFilterLab = (labNumber) => {

@@ -53,7 +53,21 @@ var Home = /*#__PURE__*/function (_React$Component) {
       // 그러면 결과 값은 무엇을 내보내야 하나?
       // - 랩의 개수
 
-      return 11;
+      // 내가 해결한 코드
+      // const lab = this.initialMembers.filter((item, index) => {
+      //   return (
+      //     this.initialMembers.findIndex((item2, index2) => {
+      //       return item.lab === item2.lab
+      //     }) === index
+      //   )
+      // })
+
+      var labSet = new Set();
+      this.state.members.forEach(function (_ref) {
+        var lab = _ref.lab;
+        labSet.add(lab);
+      });
+      return labSet.size;
     }
   }, {
     key: "render",
@@ -73,11 +87,11 @@ var Home = /*#__PURE__*/function (_React$Component) {
             _this2.handleFilterLab(labIndex);
           }
         }, "LAB ", labIndex);
-      })), /*#__PURE__*/React.createElement("ul", null, this.state.members.map(function (_ref) {
-        var id = _ref.id,
-          name = _ref.name,
-          lab = _ref.lab,
-          gender = _ref.gender;
+      })), /*#__PURE__*/React.createElement("ul", null, this.state.members.map(function (_ref2) {
+        var id = _ref2.id,
+          name = _ref2.name,
+          lab = _ref2.lab,
+          gender = _ref2.gender;
         return /*#__PURE__*/React.createElement("li", {
           key: id
         }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("b", null, lab), /*#__PURE__*/React.createElement("span", null, gender !== null && gender !== void 0 && gender.includes('여성') ? '👩' : '👨'), " ", name));
