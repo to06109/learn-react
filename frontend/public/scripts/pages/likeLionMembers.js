@@ -12,12 +12,13 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-var Home = /*#__PURE__*/function (_React$Component) {
-  _inherits(Home, _React$Component);
-  var _super = _createSuper(Home);
-  function Home() {
+import { likeLionMembers } from '../data/likeLionMembers.js';
+var likeLion = /*#__PURE__*/function (_React$Component) {
+  _inherits(likeLion, _React$Component);
+  var _super = _createSuper(likeLion);
+  function likeLion() {
     var _this;
-    _classCallCheck(this, Home);
+    _classCallCheck(this, likeLion);
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
@@ -26,9 +27,31 @@ var Home = /*#__PURE__*/function (_React$Component) {
       // 모든 것을 상태로 설정하는 것은 옳지 않다.
       members: likeLionMembers
     });
+    _defineProperty(_assertThisInitialized(_this), "initialMembers", likeLionMembers);
+    _defineProperty(_assertThisInitialized(_this), "labCount", _this.calcLabCount());
+    _defineProperty(_assertThisInitialized(_this), "handleFilterLab", function (labNumber) {
+      _this.setState({
+        members: _this.initialMembers.filter(function (member) {
+          return member.lab === labNumber;
+        })
+      });
+    });
     return _this;
   }
-  _createClass(Home, [{
+  _createClass(likeLion, [{
+    key: "calcLabCount",
+    value:
+    // this.members (105) 에서 lab 몇 개? 계산
+
+    function calcLabCount() {
+      var labSet = new Set();
+      this.state.members.forEach(function (_ref) {
+        var lab = _ref.lab;
+        labSet.add(lab);
+      });
+      return labSet.size;
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -46,18 +69,18 @@ var Home = /*#__PURE__*/function (_React$Component) {
             _this2.handleFilterLab(labIndex);
           }
         }, "LAB ", labIndex);
-      })), /*#__PURE__*/React.createElement("ul", null, this.state.members.map(function (_ref) {
-        var id = _ref.id,
-          name = _ref.name,
-          lab = _ref.lab,
-          gender = _ref.gender;
+      })), /*#__PURE__*/React.createElement("ul", null, this.state.members.map(function (_ref2) {
+        var id = _ref2.id,
+          name = _ref2.name,
+          lab = _ref2.lab,
+          gender = _ref2.gender;
         return /*#__PURE__*/React.createElement("li", {
           key: id
         }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("b", null, lab), /*#__PURE__*/React.createElement("span", null, gender !== null && gender !== void 0 && gender.includes('여성') ? '👩' : '👨'), " ", name));
       })));
     }
   }]);
-  return Home;
+  return likeLion;
 }(React.Component);
 function LabButton(props) {
   return /*#__PURE__*/React.createElement("button", {
