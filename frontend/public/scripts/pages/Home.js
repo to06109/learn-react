@@ -23,49 +23,21 @@ var Home = /*#__PURE__*/function (_React$Component) {
     }
     _this = _super.call.apply(_super, [this].concat(args));
     _defineProperty(_assertThisInitialized(_this), "state", {
-      // 모든 것을 상태로 설정하는 것은 옳지 않다.
-      members: likeLionMembers
+      descriptionList: {
+        api: 'Application Programming Interface',
+        html: 'Hyper Text Markup Language',
+        css: 'Cascading  Style Sheets',
+        ajax: 'Asynchronous JavaScript And XML'
+      }
     });
     return _this;
   }
   _createClass(Home, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "\uBA4B\uC7C1\uC774 \uC0AC\uC790\uCC98\uB7FC \uD504\uB860\uD2B8\uC5D4\uB4DC \uC2A4\uCFE8 4\uAE30 \uBA64\uBC84"), /*#__PURE__*/React.createElement("div", {
-        role: "group",
-        style: {
-          display: 'flex',
-          gap: 8
-        }
-      }, Array(this.labCount).fill(null).map(function (_, index) {
-        var labIndex = index + 1;
-        return /*#__PURE__*/React.createElement(LabButton, {
-          key: index,
-          onFilter: function onFilter() {
-            _this2.handleFilterLab(labIndex);
-          }
-        }, "LAB ", labIndex);
-      })), /*#__PURE__*/React.createElement("ul", null, this.state.members.map(function (_ref) {
-        var id = _ref.id,
-          name = _ref.name,
-          lab = _ref.lab,
-          gender = _ref.gender;
-        return /*#__PURE__*/React.createElement("li", {
-          key: id
-        }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("b", null, lab), /*#__PURE__*/React.createElement("span", null, gender !== null && gender !== void 0 && gender.includes('여성') ? '👩' : '👨'), " ", name));
-      })));
+      return /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("h2", null, "\uC124\uBA85 \uBAA9\uB85D \uB9AC\uC2A4\uD2B8 \uB80C\uB354\uB9C1"), /*#__PURE__*/React.createElement("dl", null, /*#__PURE__*/React.createElement("dt", null, "\uAE30\uC220 \uC6A9\uC5B4"), /*#__PURE__*/React.createElement("dd", null, "\uC6A9\uC5B4 \uC124\uBA85 \uB0B4\uC6A9")));
     }
   }]);
   return Home;
 }(React.Component);
-function LabButton(props) {
-  return /*#__PURE__*/React.createElement("button", {
-    type: "button",
-    style: {
-      marginBottom: 20
-    },
-    onClick: props.onFilter
-  }, props.children);
-}
 export default Home;
