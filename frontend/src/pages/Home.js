@@ -2,12 +2,15 @@ import { likeLionMembers } from '../data/likeLionMembers.js'
 
 class Home extends React.Component {
   state = {
+    // 모든 것을 상태로 설정하는 것은 옳지 않다.
     members: likeLionMembers,
   }
 
+  initialMembers = likeLionMembers
+
   handleFilterLab = (labNumber) => {
     this.setState({
-      members: this.state.members.filter((member) => member.lab === labNumber),
+      members: this.initialMembers.filter((member) => member.lab === labNumber),
     })
   }
 
@@ -16,24 +19,21 @@ class Home extends React.Component {
       <React.Fragment>
         <h2>멋쟁이 사자처럼 프론트엔드 스쿨 4기 멤버</h2>
         <div role="group" style={{ display: 'flex', gap: 8 }}>
-          <button
-            type="button"
-            style={{ marginBottom: 20 }}
-            onClick={() => {
-              this.handleFilterLab(7)
-            }}
-          >
-            LAB 7조 모여!
-          </button>
-          <button
-            type="button"
-            style={{ marginBottom: 20 }}
-            onClick={() => {
-              this.handleFilterLab(10)
-            }}
-          >
-            LAB 10조 모여!
-          </button>
+          {Array(11)
+            .fill(null)
+            .map((_, index) => {
+              let labIndex = index + 1
+              return (
+                <LabButton
+                  key={index}
+                  onFilter={() => {
+                    this.handleFilterLab(labIndex)
+                  }}
+                >
+                  LAB {labIndex}
+                </LabButton>
+              )
+            })}
         </div>
 
         <ul>
@@ -49,6 +49,14 @@ class Home extends React.Component {
       </React.Fragment>
     )
   }
+}
+
+function LabButton(props) {
+  return (
+    <button type="button" style={{ marginBottom: 20 }} onClick={props.onFilter}>
+      {props.children}
+    </button>
+  )
 }
 
 export default Home

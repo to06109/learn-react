@@ -24,11 +24,13 @@ var Home = /*#__PURE__*/function (_React$Component) {
     }
     _this = _super.call.apply(_super, [this].concat(args));
     _defineProperty(_assertThisInitialized(_this), "state", {
+      // 모든 것을 상태로 설정하는 것은 옳지 않다.
       members: likeLionMembers
     });
+    _defineProperty(_assertThisInitialized(_this), "initialMembers", likeLionMembers);
     _defineProperty(_assertThisInitialized(_this), "handleFilterLab", function (labNumber) {
       _this.setState({
-        members: _this.state.members.filter(function (member) {
+        members: _this.initialMembers.filter(function (member) {
           return member.lab === labNumber;
         })
       });
@@ -45,23 +47,15 @@ var Home = /*#__PURE__*/function (_React$Component) {
           display: 'flex',
           gap: 8
         }
-      }, /*#__PURE__*/React.createElement("button", {
-        type: "button",
-        style: {
-          marginBottom: 20
-        },
-        onClick: function onClick() {
-          _this2.handleFilterLab(7);
-        }
-      }, "LAB 7\uC870 \uBAA8\uC5EC!"), /*#__PURE__*/React.createElement("button", {
-        type: "button",
-        style: {
-          marginBottom: 20
-        },
-        onClick: function onClick() {
-          _this2.handleFilterLab(10);
-        }
-      }, "LAB 10\uC870 \uBAA8\uC5EC!")), /*#__PURE__*/React.createElement("ul", null, this.state.members.map(function (_ref) {
+      }, Array(11).fill(null).map(function (_, index) {
+        var labIndex = index + 1;
+        return /*#__PURE__*/React.createElement(LabButton, {
+          key: index,
+          onFilter: function onFilter() {
+            _this2.handleFilterLab(labIndex);
+          }
+        }, "LAB ", labIndex);
+      })), /*#__PURE__*/React.createElement("ul", null, this.state.members.map(function (_ref) {
         var id = _ref.id,
           name = _ref.name,
           lab = _ref.lab,
@@ -74,4 +68,13 @@ var Home = /*#__PURE__*/function (_React$Component) {
   }]);
   return Home;
 }(React.Component);
+function LabButton(props) {
+  return /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    style: {
+      marginBottom: 20
+    },
+    onClick: props.onFilter
+  }, props.children);
+}
 export default Home;
