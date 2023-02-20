@@ -1,6 +1,6 @@
 // 이미지 에셋 불러오기
-import logo from './assets/logo.svg'
-import './styles/App.css'
+import logo from '../assets/logo.svg'
+import './App.css'
 
 function App() {
   return (
