@@ -1,12 +1,11 @@
 import './App.css'
-import Counter from '../components/Counter'
+import { Counter } from '../components'
 
 function App() {
   return (
     <div className="App">
-      <Counter count={1} />
-      <Counter count={3} />
-      <Counter count={9} />
+      <Counter count={2} />
+      <Counter step={3} />
     </div>
   )
 }
