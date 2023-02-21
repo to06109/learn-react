@@ -44,9 +44,11 @@ class LifeCycle extends React.Component {
           다양한 사람들을 보고 싶어요!
         </button>
 
-        {/* <ul>
-          <li></li>
-        </ul> */}
+        <ul>
+          {this.state.data.map((user) => (
+            <li key={user.cell}>{user.email}</li>
+          ))}
+        </ul>
       </>
     )
   }
@@ -67,6 +69,7 @@ class LifeCycle extends React.Component {
       this.setState({
         data: data.results,
       })
+      console.log(this.state.data)
     } catch (error) {
       this.setState({
         error: {
