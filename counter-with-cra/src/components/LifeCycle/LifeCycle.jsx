@@ -13,7 +13,22 @@ class LifeCycle extends React.Component {
   }
 
   render() {
-    return <div className="LifeCycle">컴포넌트의 생명주기</div>
+    console.log(document.querySelector('.LifeCycle')) // null
+    return (
+      <>
+        <div className="LifeCycle">컴포넌트의 생명 주기</div>
+        <input
+          type="text"
+          placeholder="위에 요소를 클릭하면 초점이 내게 와요~"
+        />
+      </>
+    )
+
+    // return React.createElement(
+    //   'div',
+    //   { className: 'LifeCycle' },
+    //   '컴포넌트의 생명 주기'
+    // );
   }
 
   /* commit 단계 ------------------------------------------------------------ */
@@ -23,6 +38,20 @@ class LifeCycle extends React.Component {
   // 컴포넌트가 마운트 된 이후
   componentDidMount() {
     console.log('여기서는 실제 DOM에 접근이 가능해요')
+    // console.log(document.querySelector('.LifeCycle')) // <div className="LifeCycle">컴포넌트의 생명주기</div>
+
+    // 바닐라 프로그래밍 (React가 아닌 것 === 사이드 이펙트)
+    // 명령형 프로그래밍
+    const lifecycleElement = document.querySelector('.LifeCycle')
+
+    lifecycleElement.addEventListener('click', (e) => {
+      e.target.style.cssText = `
+        background: skyblue;
+        color: darkblue;
+        font-size: 3rem;
+        padding: 20px;
+      `
+    })
   }
 }
 

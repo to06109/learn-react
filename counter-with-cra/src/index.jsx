@@ -13,6 +13,7 @@ import App from './app/App'
 
 const root = createRoot(document.getElementById('root'))
 root.render(
+  // mount -> unmount -> mount
   <StrictMode>
     <App />
   </StrictMode>,
