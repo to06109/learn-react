@@ -31,7 +31,7 @@ class LifeCycle extends React.Component {
             minHeight: '100vh',
           }}
         >
-          <Spinner title='로딩 중...'/>
+          <Spinner title="로딩 중..." />
         </div>
       )
     }
@@ -52,22 +52,33 @@ class LifeCycle extends React.Component {
   }
 
   /* commit 단계 ------------------------------------------------------------ */
+
+  // React + Firebase 클라우드Backend (Serverless)
+  // - 인증(회원가입, 로그인, SNS 로그인)
+  // - 파이어스토어 (데이터베이스: JSON 파일 구조)
+  // - 스토리지 (이미지, 에셋 업로드 -> URL값 반환)
+  // - 호스팅 (서비스, FTP -> 무료 웹 호스팅)
+
   async fetchRandomPeople(endpoint) {
     // Random User API 서버에 요청
-    this.setState({
-      isLoading: true,
-    })
-
-    const response = await fetch(endpoint)
-
-    if (!response.ok) {
-      console.error(response.status, response.statusText)
-      return
+    try {
+      const response = await fetch(endpoint)
+      const data = await response.json()
+      this.setState({
+        data: data.results,
+      })
+    } catch (error) {
+      this.setState({
+        error: {
+          message: error.message,
+        },
+        hasError: true,
+      })
+    } finally {
+      this.setState({
+        isLoading: false,
+      })
     }
-
-    const data = await response.json()
-
-    console.log(data)
   }
 
   // 컴포넌트가 마운트 된 이후
