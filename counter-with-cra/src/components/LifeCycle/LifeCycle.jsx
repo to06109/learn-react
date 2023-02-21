@@ -16,15 +16,24 @@ class LifeCycle extends React.Component {
     // console.log(document.querySelector('.LifeCycle')) // null
     return (
       <>
-        <div className="LifeCycle" tabIndex={0}>
-          컴포넌트의 생명 주기
+        <div>
+          <div className="LifeCycle" tabIndex={0}>
+            컴포넌트의 생명 주기
+          </div>
+          <input
+            id="select-me"
+            type="text"
+            placeholder="위에 요소를 클릭하면 초점이 내게 와요~"
+            aria-label="나를 선택하세요"
+          />
         </div>
-        <input
-          id="select-me"
-          type="text"
-          placeholder="위에 요소를 클릭하면 초점이 내게 와요~"
-          aria-label="나를 선택하세요"
-        />
+
+        <button
+          type="button"
+          onClick={() => this.setState({ message: 'updated content' })}
+        >
+          {this.state.message}
+        </button>
       </>
     )
 
@@ -70,6 +79,12 @@ class LifeCycle extends React.Component {
         lifecycleElement.click()
       }
     })
+  }
+
+  // 컴포넌트가 업데이트 된 이후
+  // 업데이트 (N회)
+  componentDidUpdate() {
+    console.log('우리 컴포넌트가 변경되었어요~')
   }
 }
 
