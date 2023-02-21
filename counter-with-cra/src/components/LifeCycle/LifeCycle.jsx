@@ -48,9 +48,31 @@ class LifeCycle extends React.Component {
 
   // - 실제 DOM에 접근, 조작 (DOM 스크립트 또는 Vanilla 스크립트)
 
+  // promise (.then, .catch)
+  // async function (await, try ~ cache)
+  async fetchRandomPeople(endpoint) {
+    const response = await fetch(endpoint)
+
+    if (!response.ok) {
+      console.error(response.status, response.statusText)
+      return
+    }
+
+    const data = await response.json()
+
+    console.log(data)
+  }
+
   // 컴포넌트가 마운트 된 이후
   // 마운트 (1회 실행)
   componentDidMount() {
+    // 사이드 이펙트 2번째 스토리
+    let API_ENDPOINT = 'https://randomuser.me/api/?results=5'
+
+    // API 요청/응답
+    // fetch API
+    this.fetchRandomPeople(API_ENDPOINT)
+
     // 바닐라 프로그래밍 (React가 아닌 것 === 사이드 이펙트)
     // 명령형 프로그래밍
     const lifecycleElement = document.querySelector('.LifeCycle')
