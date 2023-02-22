@@ -2,10 +2,6 @@ import classes from './Button.module.css'
 import { tokens } from '@/theme/tokens'
 import { getColor } from '@/theme/utils'
 
-const { colors } = tokens
-
-console.log(getColor('primary/500'))
-
 export function Button({
   mode,
   secondary: isSecondary,
@@ -18,9 +14,9 @@ export function Button({
       className={classes.component}
       style={{
         backgroundColor: !isSecondary
-          ? colors.primary['500']
-          : colors.primary['50'],
-        color: !isSecondary ? colors.white : colors.primary['400'],
+          ? getColor('primary/500')
+          : getColor('primary/50'),
+        color: !isSecondary ? getColor('white') : getColor('primary/400'),
       }}
       {...restProps}
     />
