@@ -1,10 +1,24 @@
 ###### EUID ╳ Likelion
 
-# React 툴체인
+# 상태가 없는 컴포넌트 (stateless)
 
-웹 브라우저 환경에서 React를 사용하는 방법을 학습 했지만, 그것만으로는 부족합니다.
-어떤 점이 부족하며 그것을 채우기 위한 개발 환경을 직접 또는 툴체인을 사용해 구성하는 방법을 학습합니다.
+React 함수(재사용 용이, 클래스보다 가벼움) 컴포넌트
 
-- Webpack
-- Create React App
-- Vite + Vitest
+- 상태(state)를 가지지 않는다.
+- Props에 의존하는 컴포넌트
+- 표현적인(Presentaional) 컴포넌트
+- 마크업, 스타일링(레이아웃, 시각적 표현)
+- 재사용 목적
+
+## 실습 컴포넌트
+
+정규 수업 시간에 같이 만들 stateless 컴포넌트
+
+- [] 인풋
+- [x] 토글 버튼
+- [x] 화면에서 감춰지지만, 접근성을 준수하는 컴포넌트
+  - a11yHidden
+  - readableHidden
+  - srOnly
+  - screenOff
+  - blind
