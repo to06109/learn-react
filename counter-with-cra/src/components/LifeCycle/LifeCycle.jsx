@@ -5,6 +5,10 @@ import { ReactComponent as Spinner } from '../../assets/spinner.svg'
 let API_ENDPOINT = 'https://randomuser.me/api/?results=5'
 
 class LifeCycle extends React.Component {
+  /* 클래스 필드------------------------------------------------------------ */
+  // this.clearId
+  clearId = 0
+
   /* render 단계 ------------------------------------------------------------ */
 
   state = {
@@ -75,17 +79,14 @@ class LifeCycle extends React.Component {
   // 마운트 (1회 실행)
   // 이벤트 구독(subscription)
   componentDidMount() {
+    console.log(this.instanceVariable)
     // 3번째 사이드 이펙트
     // 이벤트 구독 / 취소
     // 예) 접속 중인 친구의 온라인 상태 여부 감지하는 이벤트 함수 실행(구독)
     // 예) 접속 중인 친구의 온라인 상태 여부 감지하는 이벤트 함수 연결 해제(취소)
 
-    // API 요청/응답
-    // fetch API
-    // this.fetchRandomPeople(API_ENDPOINT)
-
     // 타이머 (특정 주기마다 확인하는 이벤트 함수 시뮬레이션)
-    setInterval(() => {
+    this.clearId = setInterval(() => {
       console.log('친구야 접속중이니?')
     }, 1500)
 
@@ -130,6 +131,8 @@ class LifeCycle extends React.Component {
   // 구독 중인 이벤트 취소(unsubscription)
   componentWillUnmount() {
     console.log('컴포넌트 언마운트 전에 실행됩니다.')
+    clearInterval(this.clearId)
+    console.log('구독 중인 친구 접속 감지 이벤트를 해지했습니다.')
   }
 }
 
