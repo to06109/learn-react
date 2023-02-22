@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './LifeCycle.module.css'
-import spinnerURL, { ReactComponent as Spinner } from '../../assets/spinner.svg'
+import { ReactComponent as Spinner } from '../../assets/spinner.svg'
 
 let API_ENDPOINT = 'https://randomuser.me/api/?results=5'
 
@@ -73,10 +73,21 @@ class LifeCycle extends React.Component {
 
   // 컴포넌트가 마운트 된 이후
   // 마운트 (1회 실행)
+  // 이벤트 구독(subscription)
   componentDidMount() {
+    // 3번째 사이드 이펙트
+    // 이벤트 구독 / 취소
+    // 예) 접속 중인 친구의 온라인 상태 여부 감지하는 이벤트 함수 실행(구독)
+    // 예) 접속 중인 친구의 온라인 상태 여부 감지하는 이벤트 함수 연결 해제(취소)
+
     // API 요청/응답
     // fetch API
     // this.fetchRandomPeople(API_ENDPOINT)
+
+    // 타이머 (특정 주기마다 확인하는 이벤트 함수 시뮬레이션)
+    setInterval(() => {
+      console.log('친구야 접속중이니?')
+    }, 1500)
 
     // 바닐라 프로그래밍 (React가 아닌 것 === 사이드 이펙트)
     // 명령형 프로그래밍
@@ -114,6 +125,11 @@ class LifeCycle extends React.Component {
   // 업데이트 (N회)
   componentDidUpdate() {
     console.log('우리 컴포넌트가 변경되었어요~')
+  }
+
+  // 구독 중인 이벤트 취소(unsubscription)
+  componentWillUnmount() {
+    console.log('컴포넌트 언마운트 전에 실행됩니다.')
   }
 }
 
