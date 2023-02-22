@@ -1,10 +1,19 @@
 import classes from './Button.module.css'
+import { tokens } from '@/theme/tokens'
 
-export function Button({ mode, children, ...restProps }) {
+const { colors } = tokens
+
+export function Button({ mode, ...restProps }) {
   return (
-    <button type="button" className={classes.component} {...restProps}>
-      {children}
-    </button>
+    <button
+      type="button"
+      className={classes.component}
+      style={{
+        backgroundColor: colors.primary['500'],
+        color: colors.white,
+      }}
+      {...restProps}
+    />
   )
 }
 
