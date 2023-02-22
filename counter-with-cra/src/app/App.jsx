@@ -1,8 +1,7 @@
 import React from 'react'
 import './App.css'
-import { CounterFunction, CounterClass, Button, LifeCycle } from '../components'
-
-import { API_ENDPOINT } from '../components/LifeCycle/LifeCycle'
+import { CounterFunction, CounterClass, Button, LifeCycle, API_ENDPOINT } from 'components'
+import { ReactComponent as ReactLogo } from 'assets/logo.svg'
 
 function renderComponents(isVisible) {
   if (isVisible) {
@@ -82,6 +81,7 @@ function App() {
   // class's render method
   return (
     <div className="App">
+      <ReactLogo title="리액트 로고" />
       <button type="button" onClick={handleToggleVisible}>
         {isVisibleComponents.toString()}
       </button>

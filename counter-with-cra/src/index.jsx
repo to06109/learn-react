@@ -9,7 +9,7 @@ import { createRoot } from 'react-dom/client'
 // 스크립트 파일 확장자 생략 (.js, .jsx, .ts, .tsx, .json, .wasm)
 
 import './styles/global.css'
-import App from './app/App'
+import App from 'app/App'
 
 const root = createRoot(document.getElementById('root'))
 root.render(
