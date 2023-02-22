@@ -1,21 +1,26 @@
 import classes from './Button.module.css'
 import { tokens } from '@/theme/tokens'
+import { getColor } from '@/theme/utils'
 
 const { colors } = tokens
 
-export function Button({ mode, ...restProps }) {
-  // props로부터 파생된 지역 변수(렌더링과는 아무 상관 없음)
-  let isPrimary = mode.includes('primary')
+console.log(getColor('primary/500'))
 
+export function Button({
+  mode,
+  secondary: isSecondary,
+  disabled,
+  ...restProps
+}) {
   return (
     <button
       type="button"
       className={classes.component}
       style={{
-        backgroundColor: isPrimary
+        backgroundColor: !isSecondary
           ? colors.primary['500']
           : colors.primary['50'],
-        color: isPrimary ? colors.white : colors.primary['400'],
+        color: !isSecondary ? colors.white : colors.primary['400'],
       }}
       {...restProps}
     />
@@ -24,4 +29,6 @@ export function Button({ mode, ...restProps }) {
 
 Button.defaultProps = {
   mode: 'primary', // 'secondary'
+  secondary: false,
+  disabled: false,
 }
