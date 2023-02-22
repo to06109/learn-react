@@ -10,8 +10,10 @@ function App() {
     <div className={classes.container}>
       <h2 className={classes.headline}>Button 컴포넌트(stateless)</h2>
       <div role="group" className={classes.buttonGroup}>
-        <Button onClick={handleClick}>Primary Button</Button>
-        <Button onClick={handleClick}>Secondary Button</Button>
+        <Button onClick={handleClick}>회원가입</Button>
+        <Button mode="secondary" onClick={handleClick}>
+          로그인
+        </Button>
       </div>
     </div>
   )
