@@ -1,17 +1,17 @@
-import { forwardRef } from 'react'
-import classes from './A11yHidden.module.css'
+import { forwardRef } from 'react';
+import classes from './A11yHidden.module.css';
 
 export const A11yHidden = forwardRef(function A11yHidden(
   /* props */
   { as: Component = 'span', focusable = false, className = '', ...restProps },
   /* ref (forwarding) */
-  ref,
+  ref
 ) {
   const combinedClassNames = `${classes.srOnly} ${
     focusable ? classes.focusable : ''
-  } ${className}`.trim()
+  } ${className}`.trim();
 
-  return <Component ref={ref} className={combinedClassNames} {...restProps} />
-})
+  return <Component ref={ref} className={combinedClassNames} {...restProps} />;
+});
 
-// A11yHidden.displayName = 'A11yHidden'
+export const srOnlyClassName = classes.srOnly;

@@ -97,4 +97,4 @@ export const tokens = {
     lg: '0.3125rem',
     xl: '3.28125rem',
   },
-}
+};

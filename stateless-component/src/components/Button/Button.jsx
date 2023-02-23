@@ -1,6 +1,5 @@
-import classes from './Button.module.css'
-import { tokens } from '@/theme/tokens'
-import { getColor } from '@/theme/utils'
+import classes from './Button.module.css';
+import { getColor } from '@/theme/utils';
 
 export function Button({
   mode,
@@ -20,11 +19,11 @@ export function Button({
       }}
       {...restProps}
     />
-  )
+  );
 }
 
 Button.defaultProps = {
   mode: 'primary', // 'secondary'
   secondary: false,
   disabled: false,
-}
+};

@@ -1,22 +1,23 @@
-import { useEffect, useRef } from 'react'
-import { A11yHidden } from '../../components'
-export function SkipToContent({ to, ...restProps }) {
-  const skipToContentRef = useRef(null) // { current: null }
+import { useEffect, useRef } from 'react';
+import { A11yHidden } from '@/components';
 
-  let targetElement = null
+export function SkipToContent({ to, ...restProps }) {
+  const skipToContentRef = useRef(null); // { current: null }
+
+  let targetElement = null;
 
   useEffect(() => {
-    targetElement = document.querySelector(to) // null
+    targetElement = document.querySelector(to); // null
 
     if (targetElement) {
-      targetElement.setAttribute('tabindex', -1)
+      targetElement.setAttribute('tabindex', -1);
 
       skipToContentRef.current.addEventListener('click', (e) => {
-        e.preventDefault()
-        targetElement && targetElement.focus()
-      })
+        e.preventDefault();
+        targetElement && targetElement.focus();
+      });
     }
-  }, [])
+  }, []);
 
   return (
     <A11yHidden
@@ -26,5 +27,5 @@ export function SkipToContent({ to, ...restProps }) {
       href={to}
       {...restProps}
     />
-  )
+  );
 }

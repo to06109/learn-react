@@ -1,5 +1,5 @@
-import { Header } from './Header'
-import { Footer } from './Footer'
+import { Header } from './Header';
+import { Footer } from './Footer';
 
 export function BaseLayout({ children }) {
   return (
@@ -8,5 +8,5 @@ export function BaseLayout({ children }) {
       <main>{children}</main>
       <Footer />
     </>
-  )
+  );
 }
