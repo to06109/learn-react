@@ -12,6 +12,8 @@ function App() {
   return (
     <div className={classes.container}>
       <SkipToContent to="#snack">과자</SkipToContent>
+      <SkipToContent to="#pumpkin">호박</SkipToContent>
+      <SkipToContent to="#icecream">아이스크림</SkipToContent>
       <Nav as="h3" headline="상품 목록" list={navList} />
       <h2 className={classes.headline}>Button 컴포넌트(stateless)</h2>
       <div role="group" className={classes.buttonGroup}>

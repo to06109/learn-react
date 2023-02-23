@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { A11yHidden } from '@/components'
+import { A11yHidden } from '../../components'
 export function SkipToContent({ to, ...restProps }) {
   const skipToContentRef = useRef(null) // { current: null }
 
