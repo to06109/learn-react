@@ -16,3 +16,19 @@ React 함수(재사용 용이, 클래스 보다 가벼움) 컴포넌트
 - [학습 커리큘럼](https://github.com/users/yamoo9/projects/3/views/1)
 - [학습 진행상황](https://github.com/users/yamoo9/projects/3/views/2)
 - [학습 Q/A](https://github.com/yamoo9/likelion-FEQA/issues?q=is%3Aissue+is%3Aclosed)
+
+## 학습 저장소 자료
+
+자료 복사는 [degit](https://github.com/Rich-Harris/degit#readme) 명령을 사용하세요.
+
+```sh
+degit yamoo9/likelion-react#05-stateless-component 05-stateless-component
+```
+
+## 학습 저장소 자료
+
+자료 복사는 [degit](https://github.com/Rich-Harris/degit#readme) 명령을 사용하세요.
+
+```sh
+degit yamoo9/likelion-react#05-stateless-component 05-stateless-component
+```
