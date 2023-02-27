@@ -1,9 +1,13 @@
 ###### EUID ╳ Likelion
 
-# React 프로그래밍
+# Firebase 인증(Authentication)
 
-멋쟁이 사자처럼 React 학습 저장소
+Firebase 백엔드 서비스를 이용해 회원가입, 로그인, 로그아웃 절차를 학습합니다.
 
-- [학습 커리큘럼](https://github.com/users/yamoo9/projects/3/views/1)
-- [학습 진행상황](https://github.com/users/yamoo9/projects/3/views/2)
-- [학습 Q/A](https://github.com/yamoo9/likelion-FEQA/issues?q=is%3Aissue+is%3Aclosed)
+## 학습 저장소 자료
+
+자료 복사는 [degit](https://github.com/Rich-Harris/degit#readme) 명령을 사용하세요.
+
+```sh
+degit yamoo9/likelion-react#08-firebase-auth 08-firebase-auth
+```
