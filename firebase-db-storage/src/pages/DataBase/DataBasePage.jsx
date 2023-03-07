@@ -1,8 +1,30 @@
 import styled from 'styled-components/macro';
 import { useLayoutEffect, useState } from 'react';
-import { onChangeTodoList, updateTodoItem } from '@/todoList/utils';
+import {
+  deleteTodoItem,
+  onChangeTodoList,
+  updateTodoItem,
+} from '@/todoList/utils';
+import { useDataState } from '@/firebase/firestore';
+// import { useWriteBatchData } from '@/firebase/firestore';
+// import shopData from './shopData';
 
 export default function DataBasePage() {
+  /* -------------------------------------------------------------------------- */
+
+  const { data, error } = useDataState('categories/sneakers');
+
+  console.log(data);
+
+  // const { writeBatchData } = useWriteBatchData('categories', 'title');
+
+  // useLayoutEffect(() => {
+  // writeBatchData(shopData);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
+  /* -------------------------------------------------------------------------- */
+
   const [todoList, setTodoList] = useState([]);
 
   useLayoutEffect(() => {
@@ -41,6 +63,14 @@ export default function DataBasePage() {
                   onChange={handleToggle(id, data)}
                 />{' '}
                 {data.todo}
+                <button
+                  type="button"
+                  onClick={() => {
+                    deleteTodoItem(id);
+                  }}
+                >
+                  삭제
+                </button>
               </li>
             );
           })}
